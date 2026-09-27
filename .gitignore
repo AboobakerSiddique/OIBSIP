@@ -1,0 +1,11 @@
+
+Webdev-L3-Pizza Delivery Full Stack Application/node_modules/
+Webdev-L3-Pizza Delivery Full Stack Application/dist/
+Webdev-L3-Pizza Delivery Full Stack Application/build/
+Webdev-L3-Pizza Delivery Full Stack Application/.env
+Webdev-L3-Pizza Delivery Full Stack Application/.env.local
+Webdev-L3-Pizza Delivery Full Stack Application/.env.*.local
+Webdev-L3-Pizza Delivery Full Stack Application/*.log
+Webdev-L3-Pizza Delivery Full Stack Application/coverage/
+Webdev-L3-Pizza Delivery Full Stack Application/.DS_Store
+Webdev-L3-Pizza Delivery Full Stack Application/.gitignore

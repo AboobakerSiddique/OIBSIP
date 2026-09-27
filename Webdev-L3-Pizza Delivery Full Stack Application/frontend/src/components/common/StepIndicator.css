@@ -1,0 +1,62 @@
+.step-indicator {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin-bottom: var(--space-6);
+  flex-wrap: wrap;
+}
+
+.step-indicator__step {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.step-indicator__badge {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-heading);
+  font-size: 0.85rem;
+  border: 1.5px solid var(--color-border-strong);
+  color: var(--green);
+  background: var(--paper);
+  flex: none;
+}
+
+.step-indicator__step--active .step-indicator__badge {
+  background: var(--tomato);
+  border-color: var(--tomato);
+  color: var(--cream-light);
+}
+
+.step-indicator__step--done .step-indicator__badge {
+  background: var(--green);
+  border-color: var(--green);
+  color: var(--cream-light);
+}
+
+.step-indicator__label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--green);
+}
+
+.step-indicator__step:not(.step-indicator__step--active) .step-indicator__label {
+  display: none;
+}
+
+.step-indicator__connector {
+  width: 1.5rem;
+  height: 1.5px;
+  background: var(--color-border);
+}
+
+@media (min-width: 700px) {
+  .step-indicator__label {
+    display: inline !important;
+  }
+}

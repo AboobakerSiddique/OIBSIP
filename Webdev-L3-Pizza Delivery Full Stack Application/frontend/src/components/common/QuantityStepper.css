@@ -1,0 +1,35 @@
+.quantity-stepper {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin-bottom: var(--space-4);
+}
+
+.quantity-stepper button {
+  width: 2rem;
+  height: 2rem;
+  border: 1.5px solid var(--color-border-strong);
+  background: var(--paper);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-weight: 700;
+  color: var(--green);
+  font-size: 1rem;
+  line-height: 1;
+}
+
+.quantity-stepper button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.quantity-stepper button:hover:not(:disabled) {
+  border-color: var(--tomato);
+  color: var(--tomato);
+}
+
+.quantity-stepper__value {
+  min-width: 1.5rem;
+  text-align: center;
+  font-weight: 600;
+}

@@ -1,0 +1,568 @@
+/* ==========================================================================
+   Bella Pizza — Design tokens
+   Retro Italian Revival + Modern Minimal Product UI
+   ========================================================================== */
+
+:root {
+  color-scheme: light;
+
+  /* Brand palette — from the Bella Pizza brand board */
+  --green: #294c29;
+  --green-ink: #1e381e;
+  --deep-red: #9f280a;
+  --tomato: #b43e17;
+  --yellow: #e7af67;
+  --cream: #f6e4c9;
+  --cream-light: #fbf2e1;
+  --paper: #fffaf0;
+
+  /* Semantic aliases */
+  --color-bg: var(--cream);
+  --color-surface: var(--cream-light);
+  --color-ink: var(--green-ink);
+  --color-primary: var(--tomato);
+  --color-primary-hover: var(--deep-red);
+  --color-accent: var(--yellow);
+  --color-border: rgba(41, 76, 41, 0.22);
+  --color-border-strong: var(--green);
+  /* 5.18:1 contrast against --cream — passes WCAG AA for normal text.
+     Replaces what were six different ad-hoc opacity values (0.6–0.78)
+     scattered across component CSS, one of which (0.65) measured only
+     3.96:1 and failed AA. */
+  --text-muted: rgba(30, 56, 30, 0.75);
+
+  /* Typography */
+  --font-display: "Lobster", cursive;
+  --font-heading: "Anton", "Arial Narrow", sans-serif;
+  --font-body: "Inter", -apple-system, "Segoe UI", sans-serif;
+
+  /* Spacing scale */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 3rem;
+  --space-8: 4.5rem;
+
+  /* Radius — small/none by design, not the rounded-card default */
+  --radius-sm: 3px;
+  --radius-md: 6px;
+
+  --shadow-card: 0 1px 0 rgba(41, 76, 41, 0.08);
+  --max-content-width: 1180px;
+}
+
+/* ---------------------------------------------------------------------- */
+/* Reset + base                                                           */
+/* ---------------------------------------------------------------------- */
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background-color: var(--color-bg);
+  background-image: radial-gradient(
+      rgba(41, 76, 41, 0.05) 1px,
+      transparent 1px
+    );
+  background-size: 4px 4px;
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+}
+
+button,
+input,
+select,
+textarea {
+  font-family: inherit;
+}
+
+:focus-visible {
+  outline: 3px solid var(--tomato);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-heading);
+  font-weight: 400;
+  letter-spacing: 0.01em;
+  margin: 0 0 var(--space-3);
+  color: var(--green);
+  line-height: 1.08;
+}
+
+h1 {
+  font-size: clamp(2.4rem, 5vw, 3.6rem);
+}
+
+h2 {
+  font-size: clamp(1.7rem, 3vw, 2.3rem);
+}
+
+h3 {
+  font-size: 1.25rem;
+}
+
+p {
+  max-width: 62ch;
+  margin: 0 0 var(--space-4);
+}
+
+.wordmark {
+  font-family: var(--font-display);
+  color: var(--green);
+  line-height: 1;
+}
+
+/* ---------------------------------------------------------------------- */
+/* Layout primitives                                                      */
+/* ---------------------------------------------------------------------- */
+
+.container {
+  width: 100%;
+  max-width: var(--max-content-width);
+  margin: 0 auto;
+  padding: 0 var(--space-5);
+}
+
+@media (max-width: 640px) {
+  .container {
+    padding: 0 var(--space-4);
+  }
+}
+
+.layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.layout main {
+  flex: 1;
+}
+
+.section {
+  padding: var(--space-7) 0;
+}
+
+.section--tight {
+  padding: var(--space-6) 0;
+}
+
+.stack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.cluster {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+/* ---------------------------------------------------------------------- */
+/* Numbered section label — used only where content is genuinely ordered  */
+/* ---------------------------------------------------------------------- */
+
+.section-number {
+  font-family: var(--font-heading);
+  font-size: 0.85rem;
+  color: var(--tomato);
+  border: 1.5px solid var(--tomato);
+  border-radius: 999px;
+  width: 2rem;
+  height: 2rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+}
+
+/* ---------------------------------------------------------------------- */
+/* Buttons                                                                 */
+/* ---------------------------------------------------------------------- */
+
+.btn {
+  appearance: none;
+  border: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.95rem;
+  padding: 0.75rem 1.4rem;
+  border-radius: var(--radius-sm);
+  transition: transform 0.12s ease, background-color 0.15s ease;
+  text-decoration: none;
+  line-height: 1;
+}
+
+.btn:active {
+  transform: translateY(1px);
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.btn--primary {
+  background: var(--tomato);
+  color: var(--cream-light);
+}
+
+.btn--primary:hover:not(:disabled) {
+  background: var(--color-primary-hover);
+}
+
+.btn--secondary {
+  background: transparent;
+  color: var(--green);
+  border: 1.5px solid var(--green);
+}
+
+.btn--secondary:hover:not(:disabled) {
+  background: rgba(41, 76, 41, 0.06);
+}
+
+.btn--ghost {
+  background: transparent;
+  color: var(--green);
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.btn--ghost:hover:not(:disabled) {
+  color: var(--tomato);
+}
+
+.btn--block {
+  width: 100%;
+}
+
+.btn--sm {
+  padding: 0.5rem 0.9rem;
+  font-size: 0.85rem;
+}
+
+/* ---------------------------------------------------------------------- */
+/* Form fields                                                             */
+/* ---------------------------------------------------------------------- */
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  margin-bottom: var(--space-4);
+}
+
+.field label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--green);
+}
+
+.field input,
+.field textarea,
+.field select {
+  border: 1.5px solid var(--color-border-strong);
+  background: var(--paper);
+  border-radius: var(--radius-sm);
+  padding: 0.7rem 0.85rem;
+  font-size: 0.95rem;
+  color: var(--color-ink);
+}
+
+.field input::placeholder {
+  color: rgba(41, 76, 41, 0.45);
+}
+
+.field-error {
+  color: var(--deep-red);
+  font-size: 0.82rem;
+}
+
+/* ---------------------------------------------------------------------- */
+/* Cards                                                                   */
+/* ---------------------------------------------------------------------- */
+
+.card {
+  background: var(--paper);
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-card);
+}
+
+.card--auth {
+  max-width: 420px;
+  margin: 0 auto;
+  padding: var(--space-6);
+}
+
+.card--padded {
+  padding: var(--space-6);
+}
+
+/* ---------------------------------------------------------------------- */
+/* Badges / stamps                                                        */
+/* ---------------------------------------------------------------------- */
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.25rem 0.6rem;
+  border-radius: 999px;
+  border: 1.5px dashed var(--color-border-strong);
+  color: var(--green);
+  background: var(--cream-light);
+}
+
+.stamp {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid var(--tomato);
+  color: var(--tomato);
+  font-family: var(--font-heading);
+  font-size: 0.7rem;
+  padding: 0.3rem 0.55rem;
+  border-radius: var(--radius-sm);
+  transform: rotate(-3deg);
+  background: var(--cream-light);
+}
+
+/* ---------------------------------------------------------------------- */
+/* Status badges (order tracker)                                          */
+/* ---------------------------------------------------------------------- */
+
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-family: var(--font-heading);
+  font-size: 0.78rem;
+  padding: 0.35rem 0.75rem;
+  border-radius: var(--radius-sm);
+}
+
+.status-badge--received {
+  background: rgba(231, 175, 103, 0.35);
+  color: var(--green-ink);
+}
+
+.status-badge--kitchen {
+  background: rgba(180, 62, 23, 0.15);
+  color: var(--tomato);
+}
+
+.status-badge--delivery {
+  background: rgba(41, 76, 41, 0.15);
+  color: var(--green);
+}
+
+.status-badge--healthy {
+  background: rgba(41, 76, 41, 0.12);
+  color: var(--green);
+}
+
+.status-badge--low {
+  background: rgba(231, 175, 103, 0.4);
+  color: #7a4a0f;
+}
+
+.status-badge--out {
+  background: rgba(159, 40, 10, 0.15);
+  color: var(--deep-red);
+}
+
+/* ---------------------------------------------------------------------- */
+/* Loading / empty / error states                                        */
+/* ---------------------------------------------------------------------- */
+
+.state-block {
+  text-align: left;
+  padding: var(--space-6) 0;
+  max-width: 46ch;
+}
+
+.state-block h3 {
+  margin-bottom: var(--space-2);
+}
+
+.spinner {
+  width: 1.2rem;
+  height: 1.2rem;
+  border-radius: 50%;
+  border: 2.5px solid rgba(41, 76, 41, 0.25);
+  border-top-color: var(--tomato);
+  animation: spin 0.7s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ---------------------------------------------------------------------- */
+/* Toasts                                                                  */
+/* ---------------------------------------------------------------------- */
+
+.toast-stack {
+  position: fixed;
+  bottom: var(--space-5);
+  right: var(--space-5);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  z-index: 100;
+}
+
+.toast {
+  background: var(--green);
+  color: var(--cream-light);
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.9rem;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.18);
+  min-width: 220px;
+}
+
+.toast--error {
+  background: var(--deep-red);
+}
+
+/* ---------------------------------------------------------------------- */
+/* Divider / vintage rule                                                 */
+/* ---------------------------------------------------------------------- */
+
+.rule {
+  border: none;
+  border-top: 1.5px dashed var(--color-border);
+  margin: var(--space-6) 0;
+}
+
+/* ---------------------------------------------------------------------- */
+/* Utility                                                                */
+/* ---------------------------------------------------------------------- */
+
+.text-muted {
+  color: var(--text-muted);
+}
+
+.text-center {
+  text-align: center;
+}
+
+/* Row/price patterns repeated across checkout, order details, and admin
+   order details — extracted here instead of being redeclared inline
+   with slightly different values in each place. */
+.row-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+}
+
+.price-total {
+  font-family: var(--font-heading);
+  font-size: 1.2rem;
+  color: var(--tomato);
+}
+
+.max-w-sm {
+  max-width: 480px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.max-w-md {
+  max-width: 560px;
+}
+
+.max-w-lg {
+  max-width: 720px;
+}
+
+.mt-2 { margin-top: var(--space-2); }
+.mt-3 { margin-top: var(--space-3); }
+.mt-4 { margin-top: var(--space-4); }
+.mt-5 { margin-top: var(--space-5); }
+.mt-6 { margin-top: var(--space-6); }
+.mb-2 { margin-bottom: var(--space-2); }
+.mb-3 { margin-bottom: var(--space-3); }
+.mb-4 { margin-bottom: var(--space-4); }
+.mb-5 { margin-bottom: var(--space-5); }
+.mb-6 { margin-bottom: var(--space-6); }
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: var(--space-4);
+  z-index: 200;
+  background: var(--tomato);
+  color: var(--cream-light);
+  padding: 0.6rem 1rem;
+  border-radius: var(--radius-sm);
+  text-decoration: none;
+  font-weight: 600;
+  transition: top 0.15s ease;
+}
+
+.skip-link:focus {
+  top: var(--space-3);
+}

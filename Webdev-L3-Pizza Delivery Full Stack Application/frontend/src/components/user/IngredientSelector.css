@@ -1,0 +1,63 @@
+.ingredient-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: var(--space-3);
+}
+
+.ingredient-option {
+  border: 1.5px solid var(--color-border);
+  background: var(--paper);
+  border-radius: var(--radius-md);
+  padding: var(--space-3);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+  cursor: pointer;
+  text-align: center;
+  transition: border-color 0.15s ease, transform 0.1s ease;
+  position: relative;
+}
+
+.ingredient-option:hover {
+  border-color: var(--tomato);
+}
+
+.ingredient-option--selected {
+  border-color: var(--tomato);
+  border-width: 2px;
+  background: rgba(180, 62, 23, 0.06);
+}
+
+.ingredient-option--selected::after {
+  content: "✓";
+  position: absolute;
+  top: 0.4rem;
+  right: 0.5rem;
+  color: var(--tomato);
+  font-weight: 700;
+  font-size: 0.85rem;
+}
+
+.ingredient-option svg {
+  width: 40px;
+  height: 40px;
+}
+
+.ingredient-option__name {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--green);
+  line-height: 1.2;
+}
+
+.ingredient-option__price {
+  font-size: 0.75rem;
+  color: var(--tomato);
+}
+
+.ingredient-option input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}

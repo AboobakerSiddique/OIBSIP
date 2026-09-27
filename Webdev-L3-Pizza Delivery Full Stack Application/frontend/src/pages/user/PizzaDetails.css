@@ -1,0 +1,51 @@
+.pizza-details {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-7);
+  align-items: start;
+}
+
+.pizza-details__visual {
+  background: var(--cream-light);
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pizza-details__visual svg {
+  width: 220px;
+  height: 220px;
+}
+
+.pizza-details__toppings {
+  list-style: none;
+  padding: 0;
+  margin: var(--space-4) 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.pizza-details__toppings li {
+  border: 1.5px dashed var(--color-border-strong);
+  border-radius: 999px;
+  padding: 0.3rem 0.75rem;
+  font-size: 0.85rem;
+  color: var(--green);
+}
+
+.pizza-details__price {
+  font-family: var(--font-heading);
+  font-size: 2rem;
+  color: var(--tomato);
+  margin: var(--space-4) 0;
+}
+
+@media (max-width: 800px) {
+  .pizza-details {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,34 @@
+.auth-page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-8) var(--space-4);
+  min-height: 70vh;
+}
+
+.auth-page .card--auth h1 {
+  font-size: 1.7rem;
+  margin-bottom: var(--space-1);
+}
+
+.auth-page__wordmark {
+  text-align: center;
+  margin-bottom: var(--space-5);
+}
+
+.auth-page__wordmark .wordmark {
+  font-size: 2.4rem;
+}
+
+.auth-page__footer-link {
+  text-align: center;
+  margin-top: var(--space-4);
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+.auth-page__footer-link a {
+  color: var(--tomato);
+  font-weight: 600;
+  text-decoration: none;
+}
